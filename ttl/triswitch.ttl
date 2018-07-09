@@ -29,7 +29,10 @@ doap:maintainer [
 doap:license <GPL>;
 
 rdfs:comment """
-This switch box receives an audio input and channel it by one of it's two outputs applying a crossfade.
+This switch box receives an audio input and channel it by one of it's 3 outputs applying a crossfade.
+You can set duration for each output, it 's the duration to switch to this channel.
+You can set the fade shape for each output:
+0 is a linear fade, the more is the shape value, the faster the signal cames to this output (and outputs will have equal gain the later).
 
 """;
 
