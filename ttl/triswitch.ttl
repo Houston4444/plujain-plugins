@@ -1,0 +1,128 @@
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#>.
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+@prefix epp: <http://lv2plug.in/ns/ext/port-props#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mod: <http://moddevices.com/ns/modgui#>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+<http://Plujain/plugins/triswitch>
+a lv2:Plugin, lv2:UtilityPlugin;
+
+doap:name "Plujain TriSwitch";
+
+doap:developer [
+    foaf:name "Houston4444";
+    foaf:homepage <>;
+    foaf:mbox <mailto:4444houston@gmail.com>;
+    ];
+
+doap:maintainer [
+    foaf:name "Houston4444";
+    foaf:homepage <>;
+    foaf:mbox <mailto:4444houston@gmail.com>;
+    ];
+
+    lv2:minorVersion 1;
+    lv2:microVersion 1;
+
+doap:license <GPL>;
+
+rdfs:comment """
+This switch box receives an audio input and channel it by one of it's two outputs applying a crossfade.
+
+""";
+
+lv2:port
+[
+    a lv2:AudioPort, lv2:InputPort;
+    lv2:index 0;
+    lv2:symbol "In";
+    lv2:name "In";
+],
+[
+    a lv2:AudioPort, lv2:OutputPort;
+    lv2:index 1;
+    lv2:symbol "out_A";
+    lv2:name "Out_A";
+],
+[
+    a lv2:AudioPort, lv2:OutputPort;
+    lv2:index 2;
+    lv2:symbol "out_B";
+    lv2:name "Out_B";
+],
+[
+    a lv2:AudioPort, lv2:OutputPort;
+    lv2:index 3;
+    lv2:symbol "out_C";
+    lv2:name "Out_C";
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 4;
+    lv2:symbol "Switch";
+    lv2:name "Channel";
+    lv2:portProperty lv2:integer;
+    lv2:portProperty lv2:enumeration ;
+        lv2:scalePoint [rdfs:label "A"; rdf:value 0];
+        lv2:scalePoint [rdfs:label "B"; rdf:value 1];
+        lv2:scalePoint [rdfs:label "C"; rdf:value 2];
+    lv2:default 0;
+    lv2:minimum 0;
+    lv2:maximum 2;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 5;
+    lv2:symbol "clta";
+    lv2:name "CrossLength to A";
+    lv2:default 2.000;
+    lv2:minimum 0.000;
+    lv2:maximum 60.000;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 6;
+    lv2:symbol "ShapeA";
+    lv2:name "Shape to A";
+    lv2:default 0;
+    lv2:minimum -1;
+    lv2:maximum 1;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 7;
+    lv2:symbol "cltb";
+    lv2:name "CrossLength to B";
+    lv2:default 2;
+    lv2:minimum 0;
+    lv2:maximum 60;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 8;
+    lv2:symbol "ShapeB";
+    lv2:name "Shape to B";
+    lv2:default 0;
+    lv2:minimum -1;
+    lv2:maximum 1;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 9;
+    lv2:symbol "cltc";
+    lv2:name "CrossLength to C";
+    lv2:default 2;
+    lv2:minimum 0;
+    lv2:maximum 60;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 10;
+    lv2:symbol "ShapeC";
+    lv2:name "Shape to C";
+    lv2:default 0;
+    lv2:minimum -1;
+    lv2:maximum 1;
+].
