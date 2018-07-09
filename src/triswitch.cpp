@@ -166,6 +166,7 @@ void TriSwitch::run(LV2_Handle instance, uint32_t n_samples)
 
     for ( uint32_t i = 0; i < n_samples; i++)
     {
+//         Avoid complex operations when not needed
         if (plugin->fade_pos >= 1.00f){
             output->out[i] = plugin->in[i];
             
@@ -194,6 +195,7 @@ void TriSwitch::run(LV2_Handle instance, uint32_t n_samples)
             gain = RAILZO(plugin->fade_pos + (sin(M_PI_2 * plugin->fade_pos) - plugin->fade_pos) * *output->shape);
         }
         
+//         while wanted gain is lower than current gain, change nothing and continue
         if (gain <= output->gain){
             for (int j = 0; j < plugin->number_of_outs; j++)
             {
@@ -208,6 +210,7 @@ void TriSwitch::run(LV2_Handle instance, uint32_t n_samples)
         output->gain = gain;
         output->out[i] = plugin->in[i] * output->gain;
         
+//         reduce gain for unwanted channels
         for (int j = 0; j < plugin->number_of_outs; j++)
         {
             if (j != canal){
